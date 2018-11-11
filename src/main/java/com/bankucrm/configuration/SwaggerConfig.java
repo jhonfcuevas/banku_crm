@@ -1,4 +1,4 @@
-package com.ofertas.configuration;
+package com.bankucrm.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

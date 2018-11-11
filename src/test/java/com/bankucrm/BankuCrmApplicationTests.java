@@ -1,4 +1,4 @@
-package com.ofertas;
+package com.bankucrm;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class OfertasApplicationTests {
+public class BankuCrmApplicationTests {
 
 	@Test
 	public void contextLoads() {

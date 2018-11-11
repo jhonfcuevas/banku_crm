@@ -1,4 +1,4 @@
-package com.ofertas.controllers;
+package com.bankucrm.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,21 +10,21 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ofertas.entities.ClientEntity;
-import com.ofertas.services.ClientService;
+import com.bankucrm.entities.CustomerEntity;
+import com.bankucrm.services.CustomerService;
 
 @RestController
-@RequestMapping("/client")
-public class ClientController {
+@RequestMapping("/customer")
+public class CustomerController {
 	
 	@Autowired
-	@Qualifier("clientService")
-	private ClientService clientService;
+	@Qualifier("customerService")
+	private CustomerService customerService;
 	
 	
 	@PostMapping("/create")
-	public ResponseEntity<Object> create(@RequestBody ClientEntity clientEntity) {
-		ResponseEntity<Object> responseEntity  = clientService.createClient(clientEntity);
+	public ResponseEntity<Object> create(@RequestBody CustomerEntity customerEntity) {
+		ResponseEntity<Object> responseEntity  = customerService.createCustomer(customerEntity);
 		if (responseEntity.hasBody()) {
 			return new ResponseEntity<>(responseEntity.getBody(), HttpStatus.OK);
 		}
@@ -32,18 +32,18 @@ public class ClientController {
 	}
 	
 	@PostMapping("/remove")
-	public ResponseEntity<Object> remove(@RequestBody ClientEntity clientEntity) {
+	public ResponseEntity<Object> remove(@RequestBody CustomerEntity customerEntity) {
 		ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
 		
-		if (clientService.removeClient(clientEntity.getDocument())) {
+		if (customerService.removeClient(customerEntity.getIdentification())) {
 			responseEntity = new ResponseEntity<>(HttpStatus.OK);
 		}
 		return responseEntity;
 	}
 	
 	@PostMapping("/update")
-	public ResponseEntity<Object> update(@RequestBody ClientEntity clientEntity) {
-		ResponseEntity<Object> responseEntity = clientService.updateClient(clientEntity);
+	public ResponseEntity<Object> update(@RequestBody CustomerEntity customerEntity) {
+		ResponseEntity<Object> responseEntity = customerService.updateClient(customerEntity);
 		
 		if (responseEntity.hasBody()) {
 			return new ResponseEntity<>(responseEntity.getBody(), HttpStatus.OK);
@@ -53,7 +53,7 @@ public class ClientController {
 	
 	@GetMapping("/findAll")
 	public ResponseEntity<Object> findAll() {
-		ResponseEntity<Object> responseEntity = clientService.findAllClients();
+		ResponseEntity<Object> responseEntity = customerService.findAllClients();
 
 		if (responseEntity.hasBody()) {
 			return new ResponseEntity<>(responseEntity.getBody(), HttpStatus.OK);

@@ -1,5 +1,4 @@
-package com.ofertas.entities;
-
+package com.bankucrm.entities;
 
 import java.util.Date;
 
@@ -12,22 +11,27 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
-@Table(name = "supplier")
-public class SupplierEntity {
+@Table(name = "customer")
+public class CustomerEntity {
 
 	@Id
-	@GeneratedValue
-	@Column(name = "document")
-	private int document;
+	@Column(name = "identification")
+	private int identification;
 
 	@Column(name = "name")
 	private String name;
 
+	@Column(name = "lastname")
+	private String lastname;
+
 	@Column(name = "mail")
 	private String mail;
+	
+	@Column(name = "address")
+	private String address;
 
 	@Column(name = "telephone")
-	private String telephone;
+	private Integer telephone;
 
 	@JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="America/Bogota")
 	@Column(name = "createDate")
@@ -39,32 +43,16 @@ public class SupplierEntity {
 	
 	@Column(name = "enabled")
 	private boolean enabled;
-	
-	@Column(name = "notificationurl")
-	private String notificationUrl;
 
-	public SupplierEntity(int document, String name, String mail, String telephone, Date createDate, Date modifyDate,
-			boolean enabled, String notificationUrl) {
-		super();
-		this.document = document;
-		this.name = name;
-		this.mail = mail;
-		this.telephone = telephone;
-		this.createDate = createDate;
-		this.modifyDate = modifyDate;
-		this.enabled = enabled;
-		this.notificationUrl = notificationUrl;
+	public CustomerEntity() {
 	}
 
-	public SupplierEntity() {
+	public int getIdentification() {
+		return identification;
 	}
 
-	public int getDocument() {
-		return document;
-	}
-
-	public void setDocument(int document) {
-		this.document = document;
+	public void setIdentification(int identification) {
+		this.identification = identification;
 	}
 
 	public String getName() {
@@ -75,6 +63,14 @@ public class SupplierEntity {
 		this.name = name;
 	}
 
+	public String getLastname() {
+		return lastname;
+	}
+
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
 	public String getMail() {
 		return mail;
 	}
@@ -83,11 +79,19 @@ public class SupplierEntity {
 		this.mail = mail;
 	}
 
-	public String getTelephone() {
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public Integer getTelephone() {
 		return telephone;
 	}
 
-	public void setTelephone(String telephone) {
+	public void setTelephone(Integer telephone) {
 		this.telephone = telephone;
 	}
 
@@ -115,19 +119,11 @@ public class SupplierEntity {
 		this.enabled = enabled;
 	}
 
-	public String getNotificationUrl() {
-		return notificationUrl;
-	}
-
-	public void setNotificationUrl(String notificationUrl) {
-		this.notificationUrl = notificationUrl;
-	}
-
 	@Override
 	public String toString() {
-		return "SupplierEntity [document=" + document + ", name=" + name + ", mail=" + mail + ", telephone=" + telephone
-				+ ", createDate=" + createDate + ", modifyDate=" + modifyDate + ", enabled=" + enabled
-				+ ", notificationUrl=" + notificationUrl + "]";
+		return "CustomerEntity [identification=" + identification + ", name=" + name + ", lastname=" + lastname
+				+ ", mail=" + mail + ", address=" + address + ", telephone=" + telephone + ", createDate=" + createDate
+				+ ", modifyDate=" + modifyDate + ", enabled=" + enabled + "]";
 	}
-
+	
 }

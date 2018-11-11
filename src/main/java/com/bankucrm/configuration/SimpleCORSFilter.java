@@ -1,4 +1,4 @@
-package com.ofertas.configuration;
+package com.bankucrm.configuration;
 
 import java.io.IOException;
 import javax.servlet.Filter;
