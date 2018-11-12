@@ -35,7 +35,7 @@ public class CustomerController {
 	public ResponseEntity<Object> remove(@RequestBody CustomerEntity customerEntity) {
 		ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
 		
-		if (customerService.removeClient(customerEntity.getIdentification())) {
+		if (customerService.removeCustomer(customerEntity.getIdentification())) {
 			responseEntity = new ResponseEntity<>(HttpStatus.OK);
 		}
 		return responseEntity;
@@ -43,7 +43,7 @@ public class CustomerController {
 	
 	@PostMapping("/update")
 	public ResponseEntity<Object> update(@RequestBody CustomerEntity customerEntity) {
-		ResponseEntity<Object> responseEntity = customerService.updateClient(customerEntity);
+		ResponseEntity<Object> responseEntity = customerService.updateCustomer(customerEntity);
 		
 		if (responseEntity.hasBody()) {
 			return new ResponseEntity<>(responseEntity.getBody(), HttpStatus.OK);
@@ -53,7 +53,7 @@ public class CustomerController {
 	
 	@GetMapping("/findAll")
 	public ResponseEntity<Object> findAll() {
-		ResponseEntity<Object> responseEntity = customerService.findAllClients();
+		ResponseEntity<Object> responseEntity = customerService.findAllCustomers();
 
 		if (responseEntity.hasBody()) {
 			return new ResponseEntity<>(responseEntity.getBody(), HttpStatus.OK);

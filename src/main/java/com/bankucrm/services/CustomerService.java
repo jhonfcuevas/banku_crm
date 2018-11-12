@@ -33,7 +33,7 @@ public class CustomerService {
 		}
 	}
 	
-	public boolean removeClient (int identification) {
+	public boolean removeCustomer (int identification) {
 		try {
 			CustomerEntity customerEntity = customerRepository.findByIdentification(identification);
 			if (customerEntity != null) {
@@ -46,7 +46,7 @@ public class CustomerService {
 		}
 	}
 	
-	public ResponseEntity<Object> updateClient (CustomerEntity customerEntity) {
+	public ResponseEntity<Object> updateCustomer (CustomerEntity customerEntity) {
 		try {
 			CustomerEntity customerEntity2 = customerRepository.findByIdentification(customerEntity.getIdentification());
 		
@@ -62,7 +62,7 @@ public class CustomerService {
 		}
 	}
 	
-	public ResponseEntity<Object> findAllClients () {
+	public ResponseEntity<Object> findAllCustomers () {
 		try {
 			List<CustomerEntity> customerEntities = customerRepository.findAll();
 			return new ResponseEntity<>(customerEntities, HttpStatus.OK);
