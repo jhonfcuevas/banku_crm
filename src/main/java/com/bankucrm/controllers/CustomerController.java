@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,4 +61,15 @@ public class CustomerController {
 		}
 		return responseEntity;
 	}
+	
+	@GetMapping("/findByidentification/{id}")
+	public ResponseEntity<Object> findByidentification(@PathVariable int id) {
+		ResponseEntity<Object> responseEntity = customerService.findByidentification(id);
+
+		if (responseEntity.hasBody()) {
+			return new ResponseEntity<>(responseEntity.getBody(), HttpStatus.OK);
+		}
+		return responseEntity;
+	}
+	
 }

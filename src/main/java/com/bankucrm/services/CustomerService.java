@@ -70,5 +70,14 @@ public class CustomerService {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
+	public ResponseEntity<Object> findByidentification(int id) {
+		try {
+			CustomerEntity customerEntity = customerRepository.findByIdentification(id);
+			return new ResponseEntity<Object>(customerEntity, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
 	
 }
